@@ -1,0 +1,57 @@
+name: Build and Deploy Landscape
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install landscape2
+        run: |
+          curl -LO https://github.com/cncf/landscape2/releases/download/v1.1.0/landscape2-x86_64-unknown-linux-gnu.tar.xz
+          tar -xvf landscape2-x86_64-unknown-linux-gnu.tar.xz
+          chmod +x landscape2-x86_64-unknown-linux-gnu/landscape2
+          sudo mv landscape2-x86_64-unknown-linux-gnu/landscape2 /usr/local/bin/
+
+      - name: Build landscape
+        run: |
+          landscape2 build \
+            --data-file my-landscape/data.yml \
+            --settings-file my-landscape/settings.yml \
+            --guide-file my-landscape/guide.yml \
+            --logos-path my-landscape/logos \
+            --output-dir build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -30,7 +30,6 @@ footer:
   links:
     github: "https://github.com/agentic-community"
     homepage: "https://agentic-community.com"
-    slack: "https://slack.cncf.io/"
 #  logo: "build/images/logo.svg"
 
 grid_items_size: large

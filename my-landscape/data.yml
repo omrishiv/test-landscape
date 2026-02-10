@@ -201,6 +201,10 @@ categories:
       - name: Serving
         items:
           - name: vLLM
-            homepage_url: https://homepage.url
+            homepage_url: https://vllm.ai/
             logo: vllm.svg
             repo_url: https://github.com/vllm-project/vllm
+          - name: SGLang
+            homepage_url: https://www.sglang.io/
+            logo: sglang.png
+            repo_url: https://github.com/sgl-project/sglang

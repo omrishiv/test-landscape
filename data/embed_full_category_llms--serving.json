@@ -1,0 +1,1 @@
+{"items":[{"category":"LLMs","homepage_url":"https://homepage.url","id":"llms--serving--vllm","logo":"logos/789d223c86d7884c48ea51f8e799e8c0ce952495186131fcaed24c06292d0e45.svg","name":"vLLM","subcategory":"Serving","website":"https://homepage.url","repositories":[{"url":"https://github.com/vllm-project/vllm","primary":true}]}]}

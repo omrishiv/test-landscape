@@ -1,0 +1,1 @@
+[{"category":"Agentic","homepage_url":"https://www.keycloak.org/","id":"agentic--iam--keycloak","logo_url":"http://127.0.0.1:8000/logos/e7ec76aed9cec7e65927f9f8cf4e675d49e79154c45c504a5cd6da1fdaecfc2d.svg","name":"Keycloak","subcategory":"IAM","repositories":[{"url":"https://github.com/keycloak/keycloak","primary":true}]}]

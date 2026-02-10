@@ -30,7 +30,7 @@ jobs:
 
       - name: Build landscape
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKENS: ${{ secrets.GITHUB_TOKEN }}
         run: |
           landscape2 build \
             --data-file my-landscape/data.yml \
